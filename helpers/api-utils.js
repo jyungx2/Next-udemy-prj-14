@@ -1,3 +1,4 @@
+// 홈페이지
 export async function getAllEvents() {
   const res = await fetch(
     "https://nextjs-course-7bf07-default-rtdb.firebaseio.com/events.json"
@@ -18,4 +19,10 @@ export async function getAllEvents() {
 export async function getFeaturedEvents() {
   const allEvents = await getAllEvents();
   return allEvents.filter((event) => event.isFeatured);
+}
+
+// 상세페이지
+export async function getEventById(id) {
+  const allEvents = await getAllEvents();
+  return allEvents.find((event) => event.id === id);
 }
